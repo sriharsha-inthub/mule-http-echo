@@ -60,11 +60,10 @@
 						<deploymentTimeout>${cloudhub.deploymentTimeout}</deploymentTimeout>
 						-->
 					    <properties>
-                             <env>${env}</env>
+                             <http.port>8084</http.port>
                          </properties>
 					</cloudHubDeployment>
-				<classifier>mule-application</classifier>
-                </configuration>
+				</configuration>
 			</plugin>
 		<plugin>
                 <groupId>com.mulesoft.munit.tools</groupId>
