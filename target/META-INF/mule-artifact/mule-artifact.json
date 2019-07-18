@@ -1,0 +1,25 @@
+{
+  "configs": [
+    "http-request-response-with-logger.xml"
+  ],
+  "secureProperties": [],
+  "redeploymentEnabled": true,
+  "name": "au.com.inthub:httpecho:1.0.0",
+  "minMuleVersion": "4.1.4",
+  "requiredProduct": "MULE",
+  "classLoaderModelLoaderDescriptor": {
+    "id": "mule",
+    "attributes": {
+      "exportedPackages": [],
+      "exportedResources": [
+        "http-request-response-with-logger.xml",
+        "log4j2.xml",
+        "mule-artifact.properties"
+      ]
+    }
+  },
+  "bundleDescriptorLoader": {
+    "id": "mule",
+    "attributes": {}
+  }
+}
