@@ -1,3 +1,21 @@
+
+> Build using AWS Developer tools
+
+---
+
+| Service        | Provider/Status  |
+| -------------  |:----------------:|
+| CodeBuild      | ![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZHBKdjRLV3dwc3pUWDlBdzM1bUR6UVBEaGczQ2tzOEdJR1NzRXprbUlwY3NhRHIwQkhXallhb2pKTENmc2duazgrWXpxNWhOR2tJem5NcXZtb3RTY25nPSIsIml2UGFyYW1ldGVyU3BlYyI6ImNCcmNpbHNjK3pLSEt2aVMiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) |
+
+---
+
+| Endpoint        | Header-client_id  | Header-client_secret  | Resource |
+| -------------   |:----------------:| ----------------:| ----------------:|
+| http://tempapi-v1.us-e2.cloudhub.io       | some_id | some_secret | /api/?city=Chennai,IN |
+| http://tempapi-v1.us-e2.cloudhub.io       | some_id | some_secret | /api/?city=Brisbane,AU |
+
+
+
 # HTTP Request-Response with Logger Example
 
 This example application illustrates how to use Mule ESB to build a simple HTTP request-response application. After reading this document, and creating and running the example in Mule, you should be able to use what you have learned to create a very simple HTTP request-response application.
