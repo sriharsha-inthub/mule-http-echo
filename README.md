@@ -9,10 +9,10 @@
 
 ---
 
-| Endpoint        | Header-client_id  | Header-client_secret  | Resource |
-| -------------   |:----------------:| ----------------:| ----------------:|
-| http://tempapi-v1.us-e2.cloudhub.io       | some_id | some_secret | /api/?city=Chennai,IN |
-| http://tempapi-v1.us-e2.cloudhub.io       | some_id | some_secret | /api/?city=Brisbane,AU |
+| Endpoint        |  Resource |
+| -------------   |:---------:|
+| http://httpecho-v1.us-e2.cloudhub.io	| /giveanyresourcename	|
+| http://httpecho-v1.us-e2.cloudhub.io  | /inthubsolutions		|
 
 
 
