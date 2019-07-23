@@ -34,7 +34,7 @@ phases:
       - echo "Mounting efs with nfs"
       - echo "$EFS_ID:/ $EFS_DIR nfs4 defaults,_netdev 0 0" >> /etc/fstab
       - cat /etc/fstab | grep $EFS_ID
-      - mount -t nfs4 -o vers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_IP_ZONE_2A:/ $EFS_DIR && ls $EFS_DIR
+      - mount -t nfs -o vers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_IP_ZONE_2A:/ $EFS_DIR && ls $EFS_DIR
       - df -h
       - mkdir -p $EFS_DIR/$MAVEN_HOME/
       - echo " ============================================================================================================== "
