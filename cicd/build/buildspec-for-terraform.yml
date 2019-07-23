@@ -35,7 +35,8 @@ phases:
       - echo "Mounting efs with nfs"
       - echo "$EFS_DNS_FULL:/ $EFS_DIR nfs4 nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2 0 0" >> /etc/fstab
       - mount -a -t efs defaults
-      - mount -t nfs4 -o vers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_DNS_FULL:/ $EFS_DIR
+      - mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_DNS_FULL:/ $EFS_DIR && ls $EFS_DIR
+      - df -h
       - mkdir -p $EFS_DIR/$MAVEN_HOME/
       - echo " ============================================================================================================== "
       - echo "Mule app - httpecho - Build Initiated... "
@@ -64,6 +65,7 @@ phases:
       - echo "Build [post_build] phase completed..."
       - echo "****************************************************************************************************************"
     finally:
+      - umount $EFS_DIR -f
       - echo "End of post-build phase."  
       - echo "To undeploy artifact from cloudhub"
       - echo "mvn mule:undeploy -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dmule.artifact=./target/httpecho-1.0.0-mule-application.jar"
