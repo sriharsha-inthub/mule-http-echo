@@ -4,8 +4,9 @@ env:
   variables:
     EFS_DIR: "/efs"
     MAVEN_HOME: ".m2"
-    EFS_DNS_FULL: "fs-ca92dbf3.efs.ap-southeast-2.amazonaws.com"
-    EFS_IP_ZONE_2A: "10.10.21.116"
+    EFS_DNS_FULL: "fs-8f450db6.efs.ap-southeast-2.amazonaws.com"
+    EFS_IP_ZONE_2A: "10.10.21.143"
+    EFS_IP_ZONE_2B: "10.10.22.198"
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
     APP_NAME: "httpecho-v1"
     MULE_VERSION: "4.1.5"
