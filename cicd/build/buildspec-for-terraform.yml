@@ -59,6 +59,7 @@ phases:
       - echo "Build [post_build] phase started..."
       - echo "Deploying to CloudHub with credentials stored in parameter store"
       - export CLOUDHUB_ACCESS_TOKEN=$(curl -d "username=$CLOUDHUB_USERNAME&password=$CLOUDHUB_PASSWORD" "$ANYPOINT_LOGIN_URI" | jq ".access_token")
+      - echo $CLOUDHUB_ACCESS_TOKEN
       - mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV --Danypoint.authToken=$CLOUDHUB_ACCESS_TOKEN -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
       - echo "mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/"
       - echo "Build [post_build] phase completed..."
