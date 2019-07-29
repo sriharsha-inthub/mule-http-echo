@@ -5,7 +5,7 @@
 
 | Service        | Provider/Status  |
 | -------------  |:----------------:|
-| CodeBuild      | ![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZHBKdjRLV3dwc3pUWDlBdzM1bUR6UVBEaGczQ2tzOEdJR1NzRXprbUlwY3NhRHIwQkhXallhb2pKTENmc2duazgrWXpxNWhOR2tJem5NcXZtb3RTY25nPSIsIml2UGFyYW1ldGVyU3BlYyI6ImNCcmNpbHNjK3pLSEt2aVMiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) |
+| CodeBuild      | ![Build Status](https://codebuild.ap-southeast-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiYUxLdVRpenhidXlmdTFrWnlEaEhJcWZvMmpvUkorL3lYby9xeGdNcHF2alRTQlB3UzR0R1VZZy9pWWpTR0hOZm5WcnNtdlBWeU5zdElnWkgzTW5vSUNRPSIsIml2UGFyYW1ldGVyU3BlYyI6Im1nWHRFL1laYkhvUUVLK1QiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master) |
 
 ---
 
