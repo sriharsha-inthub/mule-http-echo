@@ -9,6 +9,7 @@ env:
     APP_NAME: "httpecho-v1"
     MULE_VERSION: "4.1.5"
     CLOUDHUB_ENV: "Sandbox"
+    ANYPOINT_LOGIN_URI: "https://anypoint.mulesoft.com/accounts/login"
   parameter-store:
     CLOUDHUB_USERNAME: /CodeBuild/cloudhub_username
     CLOUDHUB_PASSWORD: /CodeBuild/cloudhub_password
@@ -22,7 +23,7 @@ phases:
       - echo "****************************************************************************************************************"
       - echo "Setup Elasic file system(mounting)... "
       - mkdir -p $EFS_DIR
-      - apt-get update && apt-get install -y nfs-common
+      - apt-get update && apt-get install -y nfs-common jq
     finally:
       - echo "End of install phase."
   pre_build:
@@ -57,7 +58,9 @@ phases:
       - echo "****************************************************************************************************************"
       - echo "Build [post_build] phase started..."
       - echo "Deploying to CloudHub with credentials stored in parameter store"
-      - mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
+      - export CLOUDHUB_ACCESS_TOKEN=$(curl -d "username=$CLOUDHUB_USERNAME&password=$CLOUDHUB_PASSWORD" "$ANYPOINT_LOGIN_URI" | jq ".access_token")
+      - mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV --Danypoint.authToken=$CLOUDHUB_ACCESS_TOKEN -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
+      - echo "mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/"
       - echo "Build [post_build] phase completed..."
       - echo "****************************************************************************************************************"
     finally:
@@ -65,6 +68,7 @@ phases:
       - echo "End of post-build phase."  
       - echo "To undeploy artifact from cloudhub"
       - echo "mvn mule:undeploy -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dmule.artifact=./target/httpecho-1.0.0-mule-application.jar"
+      
 artifacts:
   files:
     - target/httpecho-1.0.0-mule-application.jar
