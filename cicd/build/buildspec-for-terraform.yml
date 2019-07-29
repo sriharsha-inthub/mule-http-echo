@@ -4,9 +4,7 @@ env:
   variables:
     EFS_DIR: "/efs"
     MAVEN_HOME: ".m2"
-    EFS_DNS_FULL: "fs-6592d95c.efs.ap-southeast-2.amazonaws.com"
-    EFS_IP_ZONE_2A: "10.10.21.143"
-    EFS_IP_ZONE_2B: "10.10.22.198"
+    EFS_DNS_FULL: "efs.ap-southeast-2.amazonaws.com"
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
     APP_NAME: "httpecho-v1"
     MULE_VERSION: "4.1.5"
@@ -14,7 +12,7 @@ env:
   parameter-store:
     CLOUDHUB_USERNAME: /CodeBuild/cloudhub_username
     CLOUDHUB_PASSWORD: /CodeBuild/cloudhub_password
-
+    EFS_ID: /CodeBuild/efs_id
 phases:
   install:
     run-as: root
@@ -31,9 +29,9 @@ phases:
     run-as: root
     commands:
       - echo "****************************************************************************************************************"
-      - echo "Mounting efs with nfs"
+      - echo "Mounting efs with nfsv4"
       - df -h
-      - mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_DNS_FULL:/ $EFS_DIR && ls $EFS_DIR
+      - mount -t nfs -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport $EFS_ID.$EFS_DNS_FULL:/ $EFS_DIR && ls $EFS_DIR
       - df -h
       - mkdir -p $EFS_DIR/$MAVEN_HOME/
       - echo " ============================================================================================================== "
