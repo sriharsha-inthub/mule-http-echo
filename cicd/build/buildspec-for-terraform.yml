@@ -4,7 +4,7 @@ env:
   variables:
     EFS_DIR: "/efs"
     MAVEN_HOME: ".m2"
-    EFS_DNS_FULL: "fs-f9622ac0.efs.ap-southeast-2.amazonaws.com"
+    EFS_DNS_FULL: "fs-6592d95c.efs.ap-southeast-2.amazonaws.com"
     EFS_IP_ZONE_2A: "10.10.21.143"
     EFS_IP_ZONE_2B: "10.10.22.198"
     JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
