@@ -49,7 +49,7 @@ phases:
       - echo "****************************************************************************************************************"
       - echo "Build [build] phase started..."
       - #mvn clean install -DskipTests -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
-      - vn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
+      - mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
       - echo "Build [build] phase completed..."
     finally:
       - echo "End of build phase."

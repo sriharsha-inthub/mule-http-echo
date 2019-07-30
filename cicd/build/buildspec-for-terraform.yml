@@ -23,11 +23,7 @@ phases:
       - echo "****************************************************************************************************************"
       - echo "Setup Elasic file system(mounting)... "
       - mkdir -p $EFS_DIR
-<<<<<<< HEAD
       - apt-get update && apt-get install -y nfs-common jq
-=======
-      - apt-get install -y nfs-common
->>>>>>> 5c856de64acf695236270bb041b19a889e392b83
     finally:
       - echo "End of install phase."
   pre_build:
@@ -60,19 +56,16 @@ phases:
     commands:
       - echo "****************************************************************************************************************"
       - echo "Build [post_build] phase started..."
-<<<<<<< HEAD
       - #echo "Deploying to CloudHub with credentials stored in parameter store"
       - export CLOUDHUB_ACCESS_TOKEN=$(curl -d "username=$CLOUDHUB_USERNAME&password=$CLOUDHUB_PASSWORD" "$ANYPOINT_LOGIN_URI" | jq ".access_token")
       - echo $CLOUDHUB_ACCESS_TOKEN
       - #mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.authToken=$CLOUDHUB_ACCESS_TOKEN -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
       - #mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
-=======
       - echo "Deploying to CloudHub with credentials stored in parameter store"
       - #export CLOUDHUB_ACCESS_TOKEN=$(curl -d "username=$CLOUDHUB_USERNAME&password=$CLOUDHUB_PASSWORD" "$ANYPOINT_LOGIN_URI" | jq ".access_token")
       - #echo $CLOUDHUB_ACCESS_TOKEN
       - #mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.authToken=$CLOUDHUB_ACCESS_TOKEN -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
-      - mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
->>>>>>> 5c856de64acf695236270bb041b19a889e392b83
+      - #mvn deploy -DmuleDeploy -DskipTests -Dmule.version=$MULE_VERSION -Danypoint.environment=$CLOUDHUB_ENV -Danypoint.username=$CLOUDHUB_USERNAME -Dcloudhub.password=$CLOUDHUB_PASSWORD -Dcloudhub.application.name=$APP_NAME -Dgpg.skip=true -Dmaven.repo.local=$EFS_DIR/$MAVEN_HOME/
       - echo "Build [post_build] phase completed..."
       - echo "****************************************************************************************************************"
     finally:
